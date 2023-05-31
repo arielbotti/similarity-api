@@ -20,9 +20,15 @@ const page = async () => {
     where: {userId: user.user.id, enabled: true},
   })
     
-    return <div className="max-w7xl mx-auto mt-16">
-        {apiKey ? <ApiDashboard /> : <RequestApiKey />}
-    </div>;
+    return (<div className="max-w7xl mx-auto mt-16">
+        {apiKey ? (
+        // @ts-expect-error Server Component
+        <ApiDashboard />
+        ) : ( 
+        <RequestApiKey />
+      )}
+    </div>
+    )
 };
 
 export default page;
